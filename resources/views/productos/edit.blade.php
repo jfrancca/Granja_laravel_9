@@ -19,7 +19,7 @@
    
     @if ($errors->any())
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <strong>Lo siento!</strong> Debes revisar los campos.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -36,13 +36,19 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group pb-4">
                     <strong>Nombre:</strong>
-                    <input type="text" name="nombre" value="{{ $producto->nombre }}" class="form-control" placeholder="Name">
+                    <input type="text" name="nombre" value="{{ $producto->nombre }}" class="form-control" placeholder="nombre">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group pb-4">
+                    <strong>Fecha:</strong>
+                    <input type="text" name="fecha" value="{{ $producto->fecha }}" class="form-control" placeholder="fecha">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Detalles:</strong>
-                    <textarea class="form-control" style="height:150px" name="detalles" placeholder="Detail">{{ $producto->detalles }}</textarea>
+                    <strong>Cantidad:</strong>
+                    <input type="text" class="form-control" name="cantidad" value="{{ $producto->cantidad}}" placeholder="Cantidad">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-4">

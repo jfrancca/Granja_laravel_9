@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -14,7 +15,10 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::get();
+        // $productos = Producto::get();
+
+        $productos = Producto::join('categorias', 'productos.categoria', '=', 'categorias.id')->get();
+        //dd($productos);
 
         return view('productos.index', compact('productos'));
     }
@@ -37,12 +41,26 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'nombre' => 'required',
-            'detalles' => 'required',
+            'cantidad' => 'required',
         ]);
+        
+        Categoria::create([
+            'categoria' => $request->categoria
+        ]);
+        
+        // Producto::create($request->all());
+        $categoria_id = Categoria::where('categoria', $request->categoria)->first('id');
+        // dd($categoriaQuery->id);
 
-        Producto::create($request->all());
+        Producto::create([
+            'nombre' => $request->nombre,
+            'fecha' => $request->fecha,
+            'cantidad' => $request->cantidad,
+            'categoria' => $categoria_id->id,
+        ]);
      
         return redirect()->route('productos.index')->with('success','Producto createdo correctamente.');
     }
@@ -55,6 +73,7 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
+        // dd($producto->nombre);
         return view('productos.show', compact('producto'));
     }
 
@@ -81,7 +100,7 @@ class ProductoController extends Controller
 
         $request->validate([
             'nombre' => 'required',
-            'detalles' => 'required',
+            'cantidad' => 'required',
         ]);
         
         $producto->update($request->all());

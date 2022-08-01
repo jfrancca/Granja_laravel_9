@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->text('detalles');
+            $table->date('fecha');
+            $table->text('cantidad');
+            // $table->text('categoria');
+            $table->foreignId('categoria')->references('id')->on('categorias');
             $table->timestamps();
         });
     }

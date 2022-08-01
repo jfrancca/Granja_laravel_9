@@ -27,14 +27,18 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nombre</th>
-                                    <th>Detalles</th>
+                                    <th>Fecha</th>
+                                    <th>Cantidad</th>
+                                    <th>Categoria</th>
                                     <th width="280px">Acción</th>
                                 </tr>
                                 @foreach ($productos as $producto)
                                 <tr>
                                     <td>{{ $producto->id }}</td>
                                     <td>{{ $producto->nombre }}</td>
-                                    <td>{{ $producto->detalles }}</td>
+                                    <td>{{ $producto->fecha }}</td>
+                                    <td>{{ $producto->cantidad }}</td>
+                                    <td>{{ $producto->categoria }}</td>
                                     <td>
                                         <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
                                         @csrf

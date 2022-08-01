@@ -18,7 +18,7 @@
             
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <strong>Lo siento!</strong> Debes revisar los campos.<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -38,13 +38,23 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group pb-4">
+                            <strong>Fecha:</strong>
+                            <input type="date" name="fecha" class="form-control" placeholder="Nombre">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Detalles:</strong>
-                            <textarea class="form-control" style="height:150px" name="detalles" placeholder="Detalles"></textarea>
+                            <strong>Cantidad:</strong>
+                            <input type="text" name="cantidad" class="form-control" placeholder="Cantidad">
+                        </div>
+                        <div class="form-group">
+                            <strong>Categoria:</strong>
+                            <input type="text" name="categoria" class="form-control" placeholder="Categoria">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-4">
-                            <button type="submit" class="text-black btn btn-primary">Enviar</button>
+                        <button type="submit" class="text-black btn btn-primary">Enviar</button>
                     </div>
                 </div>    
             </form>
